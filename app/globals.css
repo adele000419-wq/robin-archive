@@ -1,0 +1,761 @@
+@import "tailwindcss";
+
+:root {
+  --background: #040404;
+  --foreground: #f3efe7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--background);
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100dvh;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    Arial,
+    "Noto Sans KR",
+    "Apple SD Gothic Neo",
+    "Malgun Gothic",
+    sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+.signal-page {
+  isolation: isolate;
+}
+
+/* 배경 격자 */
+
+.signal-grid {
+  opacity: 0.2;
+  background-image:
+    linear-gradient(rgba(170, 24, 40, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(170, 24, 40, 0.12) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(circle at center, black 5%, transparent 75%);
+  animation: signal-grid-move 18s linear infinite;
+}
+
+@keyframes signal-grid-move {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 46px 46px;
+  }
+}
+
+/* 중앙 배경광 */
+
+.signal-background-pulse {
+  background: radial-gradient(
+    circle at 50% 35%,
+    rgba(145, 12, 30, 0.18),
+    rgba(65, 3, 12, 0.05) 36%,
+    transparent 63%
+  );
+  animation: signal-background-breathe 5s ease-in-out infinite;
+}
+
+@keyframes signal-background-breathe {
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: scale(0.97);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+/* 처음 등장하는 효과 */
+
+.signal-enter {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: signal-fade-up 1.05s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.signal-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.signal-delay-2 {
+  animation-delay: 0.3s;
+}
+
+.signal-delay-3 {
+  animation-delay: 0.55s;
+}
+
+.signal-delay-4 {
+  animation-delay: 0.8s;
+}
+
+.signal-delay-5 {
+  animation-delay: 1s;
+}
+
+.signal-delay-6 {
+  animation-delay: 1.2s;
+}
+
+.signal-delay-7 {
+  animation-delay: 1.45s;
+}
+
+.signal-delay-8 {
+  animation-delay: 1.7s;
+}
+
+.signal-delay-9 {
+  animation-delay: 1.9s;
+}
+
+.signal-delay-10 {
+  animation-delay: 2.1s;
+}
+
+.signal-delay-11 {
+  animation-delay: 2.3s;
+}
+
+.signal-delay-12 {
+  animation-delay: 2.5s;
+}
+
+@keyframes signal-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* PC 마우스 광원 */
+
+.signal-cursor-light {
+  transition: background 130ms ease-out;
+}
+
+/* 상단 문구 점멸 */
+
+.signal-header-code {
+  animation: signal-header-flicker 4.5s ease-in-out infinite;
+}
+
+@keyframes signal-header-flicker {
+  0%,
+  17%,
+  21%,
+  24%,
+  100% {
+    opacity: 0.8;
+  }
+
+  18%,
+  23% {
+    opacity: 0.28;
+  }
+
+  19%,
+  22% {
+    opacity: 1;
+  }
+}
+
+/* SIGNAL 상태 표시 */
+
+.signal-label {
+  animation: signal-label-pulse 2.3s ease-in-out infinite;
+}
+
+.signal-status-dot {
+  box-shadow:
+    0 0 6px rgba(239, 68, 68, 0.9),
+    0 0 16px rgba(220, 38, 38, 0.6);
+  animation: signal-status-pulse 1.45s ease-in-out infinite;
+}
+
+@keyframes signal-label-pulse {
+  0%,
+  100% {
+    opacity: 0.65;
+    text-shadow: 0 0 5px rgba(239, 68, 68, 0.25);
+  }
+
+  50% {
+    opacity: 1;
+    text-shadow:
+      0 0 8px rgba(239, 68, 68, 0.65),
+      0 0 22px rgba(185, 28, 28, 0.3);
+  }
+}
+
+@keyframes signal-status-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+/* 반복해서 떠오르는 입자 */
+
+.signal-particle {
+  background: rgba(239, 68, 68, 0.75);
+  box-shadow:
+    0 0 8px rgba(239, 68, 68, 0.8),
+    0 0 18px rgba(185, 28, 28, 0.45);
+  animation-name: signal-particle-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes signal-particle-float {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 70px, 0) scale(0.45);
+  }
+
+  15% {
+    opacity: 0.85;
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: translate3d(18px, -35px, 0) scale(1.15);
+  }
+
+  80% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-15px, -160px, 0) scale(0.5);
+  }
+}
+
+/* 중앙 레이더 원 */
+
+.signal-radar {
+  width: min(72vw, 620px);
+  aspect-ratio: 1;
+  opacity: 0.42;
+}
+
+.signal-radar span {
+  position: absolute;
+  inset: 50%;
+  border: 1px solid rgba(220, 38, 38, 0.36);
+  border-radius: 9999px;
+  transform: translate(-50%, -50%) scale(0.15);
+  animation: signal-radar-wave 5.5s ease-out infinite;
+}
+
+.signal-radar span:nth-child(2) {
+  animation-delay: 1.8s;
+}
+
+.signal-radar span:nth-child(3) {
+  animation-delay: 3.6s;
+}
+
+@keyframes signal-radar-wave {
+  0% {
+    width: 12%;
+    height: 12%;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.75;
+  }
+
+  100% {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+}
+
+/* 화면을 훑는 붉은 선 */
+
+.signal-sweep {
+  top: -10%;
+  height: 90px;
+  opacity: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(239, 68, 68, 0.035),
+    rgba(239, 68, 68, 0.18),
+    transparent
+  );
+  border-bottom: 1px solid rgba(248, 113, 113, 0.28);
+  box-shadow: 0 12px 35px rgba(185, 28, 28, 0.12);
+  animation: signal-sweep-down 7s linear infinite;
+}
+
+@keyframes signal-sweep-down {
+  0% {
+    top: -15%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.85;
+  }
+
+  85% {
+    opacity: 0.55;
+  }
+
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+/* 움직이는 붉은 구분선 */
+
+.signal-line {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(220, 38, 38, 0.8),
+    transparent
+  );
+  box-shadow: 0 0 18px rgba(185, 28, 28, 0.3);
+}
+
+.signal-line span {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 35%;
+  height: 100%;
+  background: rgba(255, 215, 215, 0.9);
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 0.9),
+    0 0 18px rgba(239, 68, 68, 0.9);
+  animation: signal-line-run 2.8s ease-in-out infinite;
+}
+
+@keyframes signal-line-run {
+  from {
+    left: -45%;
+  }
+
+  to {
+    left: 115%;
+  }
+}
+
+/* 제목 글리치 */
+
+.signal-glitch {
+  position: relative;
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.08),
+    0 0 44px rgba(150, 15, 28, 0.14);
+  animation:
+    signal-title-breathe 4s ease-in-out infinite,
+    signal-title-jump 8s steps(1) infinite;
+}
+
+.signal-glitch::before,
+.signal-glitch::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: attr(data-text);
+  opacity: 0;
+}
+
+.signal-glitch::before {
+  color: rgba(255, 30, 50, 0.75);
+  animation: signal-glitch-red 5.5s infinite;
+}
+
+.signal-glitch::after {
+  color: rgba(70, 165, 255, 0.48);
+  animation: signal-glitch-blue 5.5s infinite;
+}
+
+@keyframes signal-title-breathe {
+  0%,
+  100% {
+    text-shadow:
+      0 0 14px rgba(255, 255, 255, 0.05),
+      0 0 35px rgba(150, 15, 28, 0.08);
+  }
+
+  50% {
+    text-shadow:
+      0 0 26px rgba(255, 255, 255, 0.15),
+      0 0 58px rgba(190, 18, 35, 0.22);
+  }
+}
+
+@keyframes signal-title-jump {
+  0%,
+  88%,
+  90%,
+  92%,
+  100% {
+    transform: translate(0);
+  }
+
+  89% {
+    transform: translate(-1px, 1px);
+  }
+
+  91% {
+    transform: translate(2px, -1px);
+  }
+}
+
+@keyframes signal-glitch-red {
+  0%,
+  83%,
+  88%,
+  100% {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    transform: translateX(0);
+  }
+
+  84% {
+    opacity: 0.75;
+    clip-path: inset(12% 0 58% 0);
+    transform: translateX(5px);
+  }
+
+  85% {
+    opacity: 0.5;
+    clip-path: inset(60% 0 10% 0);
+    transform: translateX(-4px);
+  }
+
+  86% {
+    opacity: 0.75;
+    clip-path: inset(38% 0 34% 0);
+    transform: translateX(3px);
+  }
+}
+
+@keyframes signal-glitch-blue {
+  0%,
+  84%,
+  89%,
+  100% {
+    opacity: 0;
+    clip-path: inset(100% 0 0 0);
+    transform: translateX(0);
+  }
+
+  85% {
+    opacity: 0.55;
+    clip-path: inset(48% 0 25% 0);
+    transform: translateX(-5px);
+  }
+
+  86% {
+    opacity: 0.4;
+    clip-path: inset(7% 0 72% 0);
+    transform: translateX(4px);
+  }
+
+  87% {
+    opacity: 0.6;
+    clip-path: inset(72% 0 5% 0);
+    transform: translateX(-3px);
+  }
+}
+
+/* 버튼 */
+
+.signal-button {
+  box-shadow:
+    inset 0 0 0 rgba(185, 28, 28, 0),
+    0 0 0 rgba(185, 28, 28, 0);
+}
+
+.signal-button:hover {
+  border-color: rgb(239 68 68);
+  box-shadow:
+    inset 0 0 28px rgba(127, 29, 29, 0.16),
+    0 0 28px rgba(185, 28, 28, 0.24);
+}
+
+.signal-button-arrow {
+  animation: signal-arrow-move 1.35s ease-in-out infinite;
+}
+
+@keyframes signal-arrow-move {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateX(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(6px);
+  }
+}
+
+/* CRT 주사선 */
+
+.signal-scanlines {
+  opacity: 0.1;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(255, 255, 255, 0.055) 4px
+  );
+  animation: signal-scanlines-move 8s linear infinite;
+}
+
+@keyframes signal-scanlines-move {
+  from {
+    background-position-y: 0;
+  }
+
+  to {
+    background-position-y: 100px;
+  }
+}
+
+/* 화면 노이즈 */
+
+.signal-noise {
+  inset: -8%;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='.8'/%3E%3C/svg%3E");
+  animation: signal-noise-move 0.18s steps(2) infinite;
+}
+
+@keyframes signal-noise-move {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  20% {
+    transform: translate(-2%, 1%);
+  }
+
+  40% {
+    transform: translate(1%, -2%);
+  }
+
+  60% {
+    transform: translate(2%, 2%);
+  }
+
+  80% {
+    transform: translate(-1%, -1%);
+  }
+
+  100% {
+    transform: translate(1%, 1%);
+  }
+}
+
+/* 네 모서리 장식 */
+
+.signal-corner {
+  position: fixed;
+  z-index: 35;
+  width: 27px;
+  height: 27px;
+  pointer-events: none;
+  opacity: 0;
+  animation:
+    signal-corner-appear 1.4s 2.7s forwards,
+    signal-corner-pulse 3s 4.1s ease-in-out infinite;
+}
+
+.signal-corner-left-top {
+  top: 14px;
+  left: 14px;
+  border-top: 1px solid rgba(239, 68, 68, 0.65);
+  border-left: 1px solid rgba(239, 68, 68, 0.65);
+}
+
+.signal-corner-right-top {
+  top: 14px;
+  right: 14px;
+  border-top: 1px solid rgba(239, 68, 68, 0.65);
+  border-right: 1px solid rgba(239, 68, 68, 0.65);
+}
+
+.signal-corner-left-bottom {
+  bottom: 14px;
+  left: 14px;
+  border-bottom: 1px solid rgba(239, 68, 68, 0.65);
+  border-left: 1px solid rgba(239, 68, 68, 0.65);
+}
+
+.signal-corner-right-bottom {
+  right: 14px;
+  bottom: 14px;
+  border-right: 1px solid rgba(239, 68, 68, 0.65);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.65);
+}
+
+@keyframes signal-corner-appear {
+  to {
+    opacity: 0.8;
+  }
+}
+
+@keyframes signal-corner-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    filter: drop-shadow(0 0 0 rgba(239, 68, 68, 0));
+  }
+
+  50% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.6));
+  }
+}
+
+/* 태블릿과 PC */
+
+@media (min-width: 640px) {
+  .signal-corner {
+    width: 36px;
+    height: 36px;
+  }
+
+  .signal-corner-left-top {
+    top: 22px;
+    left: 22px;
+  }
+
+  .signal-corner-right-top {
+    top: 22px;
+    right: 22px;
+  }
+
+  .signal-corner-left-bottom {
+    bottom: 22px;
+    left: 22px;
+  }
+
+  .signal-corner-right-bottom {
+    right: 22px;
+    bottom: 22px;
+  }
+}
+
+/* 모바일 성능과 가시성 조절 */
+
+@media (max-width: 639px) {
+  .signal-grid {
+    opacity: 0.14;
+    background-size: 34px 34px;
+  }
+
+  .signal-radar {
+    width: 105vw;
+    opacity: 0.3;
+  }
+
+  .signal-sweep {
+    height: 65px;
+  }
+
+  .signal-scanlines {
+    opacity: 0.065;
+  }
+
+  .signal-noise {
+    opacity: 0.025;
+  }
+
+  .signal-particle:nth-child(3n) {
+    display: none;
+  }
+}
+
+/* 움직임 최소화 설정을 사용하는 사람 */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+
+  .signal-enter,
+  .signal-grid,
+  .signal-background-pulse,
+  .signal-header-code,
+  .signal-label,
+  .signal-status-dot,
+  .signal-particle,
+  .signal-radar span,
+  .signal-sweep,
+  .signal-line span,
+  .signal-glitch,
+  .signal-glitch::before,
+  .signal-glitch::after,
+  .signal-button-arrow,
+  .signal-scanlines,
+  .signal-noise,
+  .signal-corner {
+    animation: none !important;
+  }
+
+  .signal-enter,
+  .signal-corner {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
