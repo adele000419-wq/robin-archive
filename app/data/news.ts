@@ -1,4 +1,15 @@
-export const hunterNews = [
+export type HunterNewsCategory =
+  | "속보"
+  | "협회"
+  | "문서"
+  | "운영";
+
+export type HunterNewsItem = {
+  category: HunterNewsCategory;
+  message: string;
+};
+
+export const hunterNews: HunterNewsItem[] = [
   {
     category: "속보",
     message: "백두산 인근에서 대규모 마력 반응이 감지되었습니다.",
