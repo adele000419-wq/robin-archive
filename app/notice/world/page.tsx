@@ -80,14 +80,14 @@ const globalRegions: RegionRecord[] = [
       "동부와 서부의 초대형 방벽도시를 중심으로 연방체제를 유지한다. 국토 중앙부 대부분은 마경으로 변해 있으며 대륙 횡단로는 소멸한 상태다.",
   },
   {
-    name: "유럽 생존도시 연합",
+    name: "유럽 연합",
     status: "부분 생존",
     tone: "alive",
     description:
       "기존 국경이 붕괴한 이후 주요 방벽도시들이 공동방위체제를 유지한다. 과거의 국가명은 행정기록에만 남아 있다.",
   },
   {
-    name: "중화민국",
+    name: "중화 군벌도시권",
     status: "분열",
     tone: "warning",
     description:
@@ -101,11 +101,11 @@ const globalRegions: RegionRecord[] = [
       "도쿄와 오사카를 포함한 일부 해안도시가 유지된다. 내륙과 다수의 섬은 마물 서식지로 변해 있다.",
   },
   {
-    name: "러시아 북방권",
+    name: "북방권",
     status: "통신 두절",
     tone: "unknown",
     description:
-      "국토 대부분과 통신이 단절되어 있다. 극소수의 북방요새가 유지된다는 기록만 간헐적으로 수신된다.",
+      "국토 대부분과 통신이 단절되어 있다. 러시아의 극소수 북방요새가 유지된다는 기록만 간헐적으로 수신된다.",
   },
   {
     name: "동남아시아",
@@ -115,14 +115,14 @@ const globalRegions: RegionRecord[] = [
       "고온다습한 환경에서 마물이 급격하게 번식한다. 육상국가 대부분은 붕괴한 상태이며 일부 해상도시만 명맥을 이어간다.",
   },
   {
-    name: "아프리카 대륙",
+    name: "아프리카",
     status: "확인 불가",
     tone: "unknown",
     description:
       "대륙 규모의 초대형 게이트 발생 이후 공식 통신망이 소멸한 상태다. 현재 인류의 생존 규모는 확인되지 않는다.",
   },
   {
-    name: "남아메리카 마경",
+    name: "남아메리카",
     status: "대부분 소멸",
     tone: "dead",
     description:
@@ -280,24 +280,39 @@ function StatusBadge({
 
 export default function WorldPage() {
   return (
-    <main className="relative min-h-dvh overflow-x-hidden bg-[#090a0b] px-5 py-8 text-[#f0ece3] sm:px-8 sm:py-12">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_50%_3%,rgba(173,130,45,0.075),transparent_38%)]" />
+    <main className="relative min-h-dvh overflow-x-hidden bg-[#050607] px-5 py-8 text-[#f0ece3] sm:px-8 sm:py-12">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_50%_-8%,rgba(213,176,92,0.2),transparent_38%),radial-gradient(circle_at_10%_52%,rgba(87,65,28,0.11),transparent_34%),radial-gradient(circle_at_92%_74%,rgba(114,28,28,0.08),transparent_34%)]" />
       <div className="pointer-events-none fixed inset-0 opacity-[0.018] [background-image:linear-gradient(rgba(255,255,255,0.25)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.25)_1px,transparent_1px)] [background-size:64px_64px]" />
-      <div className="pointer-events-none fixed inset-0 shadow-[inset_0_0_140px_rgba(0,0,0,0.76)] sm:shadow-[inset_0_0_230px_rgba(0,0,0,0.88)]" />
+      <div className="pointer-events-none fixed inset-0 shadow-[inset_0_0_180px_rgba(0,0,0,0.82)] sm:shadow-[inset_0_0_320px_rgba(0,0,0,0.94)]" />
 
       <article className="relative z-10 mx-auto w-full max-w-6xl">
-        <header className="world-rise world-delay-1 border-b border-[#b2914f]/30 pb-8 sm:pb-11">
+        <header className="world-rise world-delay-1 relative min-h-[72vh] overflow-hidden border border-[#d1ad5d]/24 bg-black/25 px-6 py-12 shadow-[0_40px_140px_rgba(0,0,0,0.52)] sm:px-10 sm:py-16 lg:flex lg:items-end">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#f0d58a]/90 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-[#d5b86f]/30 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-[#d5b86f]/30 to-transparent" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-serif text-[clamp(8rem,25vw,23rem)] font-black tracking-[-0.06em] text-[#d5b86f]/[0.045]">
+            WORLD
+          </div>
+          <div className="pointer-events-none absolute right-6 top-6 hidden rotate-[-7deg] border-2 border-[#d5b86f]/25 px-5 py-3 text-center sm:block">
+            <p className="text-[8px] tracking-[0.22em] text-[#d5b86f]">
+              AUTHENTICATED
+            </p>
+            <p className="mt-1 font-serif text-xl text-[#f0d58a]">
+              DOCUMENT 01
+            </p>
+          </div>
+          <div className="relative w-full">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="mb-4 text-[9px] tracking-[0.28em] text-[#d2b46f]/85 sm:text-[10px]">
                 SIGNAL ARCHIVE · DOCUMENT 01
               </p>
 
-              <h1 className="font-serif text-5xl font-normal tracking-[0.1em] text-[#fffaf0] sm:text-7xl">
+              <h1 className="font-serif text-6xl font-normal tracking-[0.1em] text-[#fffaf0] drop-shadow-[0_0_34px_rgba(240,213,138,0.14)] sm:text-8xl lg:text-9xl">
                 세계관
               </h1>
 
-              <p className="mt-6 max-w-3xl break-keep text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
+              <p className="mt-8 max-w-3xl break-keep text-base leading-8 text-zinc-300 sm:text-lg sm:leading-9">
                 최초의 게이트가 출현한 2026년부터 현재의 잔존 인류 시대에
                 이르기까지를 다루는 공식 기록이다.
               </p>
@@ -339,11 +354,41 @@ export default function WorldPage() {
               <span className="ml-3 text-[#e1c57e]">01</span>
             </p>
           </div>
+          </div>
         </header>
 
-        <section className="world-rise world-delay-2 border-b border-white/[0.1] py-12 sm:py-16">
+        <section className="world-rise world-delay-2 border-b border-white/[0.1] py-20 text-center sm:py-28">
+          <p className="text-[9px] tracking-[0.34em] text-[#d5b86f]">
+            THE BEGINNING OF THE END
+          </p>
+
+          <p className="mx-auto mt-9 max-w-5xl break-keep font-serif text-3xl leading-[1.65] text-[#fff4d3] sm:text-5xl">
+            모든 것은 서울 상공에 열린
+            <br />
+            단 하나의 균열에서 시작되었다.
+          </p>
+
+          <div className="mx-auto mt-10 h-px w-52 bg-gradient-to-r from-transparent via-[#d5b86f]/80 to-transparent" />
+        </section>
+
+        <section id="first-gate" className="world-rise world-delay-6 scroll-mt-28 border-b border-white/[0.1] py-12 sm:py-16">
           <div className="text-center">
-            <p className="font-serif text-sm tracking-[0.3em] text-[#d5b86f]">
+            <div className="mx-auto grid max-w-3xl grid-cols-3 border-y border-[#c2a45d]/28 bg-black/20">
+              <div className="px-4 py-7">
+                <p className="text-[9px] tracking-[0.22em] text-zinc-500">YEAR</p>
+                <p className="mt-2 font-serif text-4xl text-[#f0d48b] sm:text-5xl">2026</p>
+              </div>
+              <div className="border-x border-white/[0.08] px-4 py-7">
+                <p className="text-[9px] tracking-[0.22em] text-zinc-500">MONTH</p>
+                <p className="mt-2 font-serif text-4xl text-[#f0d48b] sm:text-5xl">03</p>
+              </div>
+              <div className="px-4 py-7">
+                <p className="text-[9px] tracking-[0.22em] text-zinc-500">DAY</p>
+                <p className="mt-2 font-serif text-4xl text-[#f0d48b] sm:text-5xl">17</p>
+              </div>
+            </div>
+
+            <p className="mt-12 font-serif text-sm tracking-[0.3em] text-[#d5b86f]">
               제1장
             </p>
 
@@ -394,7 +439,7 @@ export default function WorldPage() {
           </div>
         </section>
 
-        <section className="world-rise world-delay-3 border-b border-white/[0.1] py-12 sm:py-16">
+        <section id="korea-status" className="world-rise world-delay-3 scroll-mt-28 border-b border-white/[0.1] py-12 sm:py-16">
           <p className="font-serif text-sm tracking-[0.26em] text-[#d5b86f]">
             제2장
           </p>
@@ -412,7 +457,7 @@ export default function WorldPage() {
             {koreanStatistics.map((stat, index) => (
               <div
                 key={stat.label}
-                className={`bg-white/[0.012] p-6 sm:p-7 ${
+                className={`group bg-white/[0.018] p-6 transition duration-300 hover:-translate-y-1 hover:bg-[#d5b86f]/[0.035] sm:p-7 ${
                   index > 0
                     ? "border-t border-white/[0.1] sm:border-t-0 sm:border-l"
                     : ""
@@ -526,7 +571,7 @@ export default function WorldPage() {
           </div>
         </section>
 
-        <section className="world-rise world-delay-4 border-b border-white/[0.1] py-12 sm:py-16">
+        <section id="global-status" className="world-rise world-delay-4 scroll-mt-28 border-b border-white/[0.1] py-12 sm:py-16">
           <p className="font-serif text-sm tracking-[0.26em] text-[#d5b86f]">
             제3장
           </p>
@@ -550,7 +595,7 @@ export default function WorldPage() {
             {globalStatistics.map((stat, index) => (
               <div
                 key={stat.label}
-                className={`bg-white/[0.012] p-6 sm:p-7 ${
+                className={`group bg-white/[0.018] p-6 transition duration-300 hover:-translate-y-1 hover:bg-[#d5b86f]/[0.035] sm:p-7 ${
                   index > 0
                     ? "border-t border-white/[0.1] sm:border-t-0 sm:border-l"
                     : ""
@@ -593,7 +638,7 @@ export default function WorldPage() {
           </div>
         </section>
 
-        <section className="world-rise world-delay-5 border-b border-white/[0.1] py-12 sm:py-16">
+        <section id="timeline" className="world-rise world-delay-5 scroll-mt-28 border-b border-white/[0.1] py-12 sm:py-16">
           <p className="font-serif text-sm tracking-[0.26em] text-[#d5b86f]">
             공식 기록 연표
           </p>
@@ -643,17 +688,32 @@ export default function WorldPage() {
           </div>
         </section>
 
-        <section className="world-rise world-delay-6 py-14 text-center sm:py-20">
-          <p className="font-serif text-xl leading-9 text-[#e5c77e] sm:text-2xl">
-            인류는 세계를 지켜내지 못한다.
-          </p>
+        <section className="world-rise world-delay-7 relative overflow-hidden border-y border-[#c2a45d]/24 bg-black/30 px-6 py-20 text-center sm:px-10 sm:py-28">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(194,164,93,0.12),transparent_60%)]" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap font-serif text-[clamp(6rem,18vw,14rem)] text-[#c2a45d]/[0.045]">
+            HUMANITY
+          </div>
 
-          <p className="mt-4 font-serif text-xl leading-9 text-[#fff5e4] sm:text-2xl">
-            다만 멸망이 끝나는 순간만큼은 계속해서 뒤로 미룬다.
-          </p>
+          <div className="relative">
+            <p className="text-[9px] tracking-[0.34em] text-[#d5b86f]">
+              END OF DOCUMENT 01
+            </p>
+
+            <div className="mx-auto mt-8 h-px w-52 bg-gradient-to-r from-transparent via-[#d5b86f]/85 to-transparent" />
+
+            <p className="mx-auto mt-9 max-w-4xl break-keep font-serif text-3xl leading-[1.7] text-[#fff5e4] sm:text-5xl">
+              인류는 세계를 지켜내지 못했다.
+              <br />
+              그러나 오늘도 누군가는
+              <br />
+              내일을 위해 싸우고 있다.
+            </p>
+
+            <div className="mx-auto mt-10 h-px w-52 bg-gradient-to-r from-transparent via-[#d5b86f]/85 to-transparent" />
+          </div>
         </section>
 
-        <footer className="world-rise world-delay-7 border-t border-white/[0.1] pt-8 text-center">
+        <footer className="world-rise world-delay-8 border-t border-white/[0.1] pt-8 text-center">
           <p className="text-[11px] tracking-[0.25em] text-zinc-200 sm:text-xs">
             made by. Robin
           </p>
@@ -688,6 +748,7 @@ export default function WorldPage() {
         .world-delay-5 { animation-delay: 0.52s; }
         .world-delay-6 { animation-delay: 0.64s; }
         .world-delay-7 { animation-delay: 0.76s; }
+        .world-delay-8 { animation-delay: 0.88s; }
 
         @keyframes worldRise {
           from {

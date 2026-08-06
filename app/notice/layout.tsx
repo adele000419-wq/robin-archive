@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import TopNotice from "@/app/components/TopNotice";
+import TopNotice from "../components/TopNotice";
+import ArchiveSearch from "../components/ArchiveSearch";
 
 export default function NoticeLayout({
   children,
@@ -9,6 +10,7 @@ export default function NoticeLayout({
   return (
     <>
       <TopNotice />
+      <ArchiveSearch />
       {children}
     </>
   );

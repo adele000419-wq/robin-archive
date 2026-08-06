@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -61,15 +61,15 @@ const notices: NoticeRecord[] = [
     href: "/notice/mamul",
     status: "OPEN",
   },
-  {
-    number: "06",
-    code: "PLAYABLE HUNTER",
-    title: "플레이어블 헌터",
-    description:
-      "세계관 내 주요 헌터의 신원과 능력에 관한 문서.",
-    href: "/notice/playable-hunter",
-    status: "LOCKED",
-  },
+ {
+  number: "06",
+  code: "PLAYABLE HUNTER",
+  title: "플레이어블 헌터",
+  description:
+    "플레이어가 직접 운용하는 헌터의 프로필과 등록 정보를 열람하는 문서.",
+  href: "/notice/playable-hunter",
+  status: "OPEN",
+},
   {
   number: "07",
   code: "GUIDELINE",
@@ -77,6 +77,15 @@ const notices: NoticeRecord[] = [
   description:
     "세계관 설정 및 플레이에 적용되는 공식 규정과 운영 지침.",
   href: "/notice/guideline",
+  status: "OPEN",
+},
+{
+  number: "08",
+  code: "RULES",
+  title: "규칙",
+  description:
+    "역극 진행과 참여자 간 상호작용에 적용되는 공식 규칙.",
+  href: "/notice/rules",
   status: "OPEN",
 },
 ];
@@ -105,6 +114,9 @@ const particleClasses = {
   green: "bg-emerald-200 shadow-[0_0_12px_rgba(167,243,208,0.72)]",
   white: "bg-white/80 shadow-[0_0_10px_rgba(255,255,255,0.55)]",
 };
+
+const openCount = notices.filter((notice) => notice.status === "OPEN").length;
+const totalCount = notices.length;
 
 export default function NoticePage() {
   const router = useRouter();
@@ -319,7 +331,7 @@ export default function NoticePage() {
         <div className="absolute inset-y-0 right-[5%] hidden w-px bg-gradient-to-b from-transparent via-[#e1c67c]/18 to-transparent lg:block" />
 
         <div className="archive-beam archive-beam-1 absolute -top-1/2 left-[18%] h-[140%] w-px bg-gradient-to-b from-transparent via-emerald-200/22 to-transparent shadow-[0_0_14px_rgba(167,243,208,0.12)]" />
-        <div className="archive-beam archive-npm run devbeam-2 absolute -top-1/2 left-[51%] h-[150%] w-[2px] bg-gradient-to-b from-transparent via-[#efd58c]/24 to-transparent shadow-[0_0_17px_rgba(239,213,140,0.14)]" />
+        <div className="archive-beam archive-beam-2 absolute -top-1/2 left-[51%] h-[150%] w-[2px] bg-gradient-to-b from-transparent via-[#efd58c]/24 to-transparent shadow-[0_0_17px_rgba(239,213,140,0.14)]" />
         <div className="archive-beam archive-beam-3 absolute -top-1/2 right-[17%] h-[140%] w-px bg-gradient-to-b from-transparent via-[#efd58c]/18 to-transparent shadow-[0_0_14px_rgba(239,213,140,0.1)]" />
 
         {particles.map(([left, top, size, delay, duration, tone], index) => (
@@ -387,13 +399,13 @@ export default function NoticePage() {
             <div className="relative overflow-hidden px-5 py-5 sm:px-6">
               <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-emerald-300/40 to-transparent" />
               <p className="text-[9px] tracking-[0.2em] text-zinc-300">공개 문서</p>
-              <p className="mt-3 font-serif text-3xl text-emerald-100">06</p>
+              <p className="mt-3 font-serif text-3xl text-emerald-100">{String(openCount).padStart(2, "0")}</p>
             </div>
 
             <div className="relative overflow-hidden border-t border-white/[0.1] px-5 py-5 sm:border-l sm:border-t-0 sm:px-6">
               <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#e9cc80]/40 to-transparent" />
               <p className="text-[9px] tracking-[0.2em] text-zinc-300">등록 문서</p>
-              <p className="mt-3 font-serif text-3xl text-[#f0d68f]">07</p>
+              <p className="mt-3 font-serif text-3xl text-[#f0d68f]">{String(totalCount).padStart(2, "0")}</p>
             </div>
 
             <div className="relative overflow-hidden border-t border-white/[0.1] px-5 py-5 sm:border-l sm:border-t-0 sm:px-6">
@@ -416,88 +428,55 @@ export default function NoticePage() {
             </div>
 
             <p className="text-[9px] tracking-[0.16em] text-zinc-300">
-              OPEN 04 / TOTAL 06
+              OPEN {String(openCount).padStart(2, "0")} / TOTAL {String(totalCount).padStart(2, "0")}
             </p>
           </div>
 
           <div className="archive-list relative overflow-hidden border-y border-white/[0.13] bg-[#050706]/40 backdrop-blur-sm">
             <div className="archive-list-scan pointer-events-none absolute inset-x-0 top-0 z-20 h-px bg-gradient-to-r from-transparent via-emerald-200/45 to-transparent shadow-[0_0_14px_rgba(167,243,208,0.35)]" />
 
-            {notices.map((notice, index) => {
-              const isLocked = notice.status === "LOCKED";
+            {notices.map((notice, index) => (
+              <button
+                type="button"
+                key={notice.number}
+                onClick={() => openDocument(notice.href, notice.title)}
+                style={{ animationDelay: `${0.24 + index * 0.08}s` }}
+                className="archive-item archive-open-item group relative grid w-full grid-cols-[44px_1fr_auto] items-start gap-4 overflow-hidden border-b border-white/[0.085] px-1 py-6 text-left opacity-0 last:border-b-0 active:scale-[0.992] sm:grid-cols-[70px_1fr_120px] sm:items-center sm:gap-7 sm:px-5 sm:py-8"
+              >
+                <span className="absolute inset-y-0 left-0 w-[2px] bg-[#f0d68f] opacity-0 shadow-[0_0_18px_rgba(240,214,143,0.62)] transition duration-300 group-hover:opacity-100" />
+                <span className="absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-[#c99b38]/[0.13] via-[#c99b38]/[0.03] to-transparent transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                <span className="archive-card-shine absolute inset-y-0 left-[-40%] w-[20%] skew-x-[-18deg] bg-gradient-to-r from-transparent via-white/[0.085] to-transparent group-hover:left-[125%]" />
+                <span className="absolute inset-x-8 bottom-0 h-px origin-left scale-x-0 bg-gradient-to-r from-[#f0d68f]/55 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
 
-              if (isLocked) {
-                return (
-                  <div
-                    key={notice.number}
-                    style={{ animationDelay: `${0.24 + index * 0.08}s` }}
-                    className="archive-item grid grid-cols-[44px_1fr_auto] items-start gap-4 border-b border-white/[0.085] px-1 py-6 opacity-0 last:border-b-0 sm:grid-cols-[70px_1fr_120px] sm:items-center sm:gap-7 sm:px-5 sm:py-8"
-                  >
-                    <p className="pt-1 font-serif text-sm tracking-[0.15em] text-zinc-500 sm:text-base">
-                      {notice.number}
-                    </p>
+                <p className="relative z-10 pt-1 font-serif text-sm tracking-[0.15em] text-[#dfc47b] transition duration-300 group-hover:text-[#ffe39b] sm:text-base">
+                  {notice.number}
+                </p>
 
-                    <div className="min-w-0 opacity-55">
-                      <p className="text-[8px] tracking-[0.2em] text-zinc-400 sm:text-[9px]">
-                        {notice.code}
-                      </p>
-                      <h3 className="mt-2 font-serif text-xl tracking-[0.05em] text-zinc-300 sm:text-2xl">
-                        {notice.title}
-                      </h3>
-                      <p className="mt-3 break-keep text-xs leading-6 text-zinc-400 sm:text-sm sm:leading-7">
-                        {notice.description}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center justify-end pt-1 sm:pt-0">
-                      <span className="border border-red-300/25 bg-red-950/10 px-3 py-1.5 text-[8px] tracking-[0.18em] text-red-100/60">
-                        LOCKED
-                      </span>
-                    </div>
-                  </div>
-                );
-              }
-
-              return (
-                <button
-                  type="button"
-                  key={notice.number}
-                  onClick={() => openDocument(notice.href, notice.title)}
-                  style={{ animationDelay: `${0.24 + index * 0.08}s` }}
-                  className="archive-item archive-open-item group relative grid w-full text-left grid-cols-[44px_1fr_auto] items-start gap-4 overflow-hidden border-b border-white/[0.085] px-1 py-6 opacity-0 last:border-b-0 active:scale-[0.992] sm:grid-cols-[70px_1fr_120px] sm:items-center sm:gap-7 sm:px-5 sm:py-8"
-                >
-                  <span className="absolute inset-y-0 left-0 w-[2px] bg-[#f0d68f] opacity-0 shadow-[0_0_18px_rgba(240,214,143,0.62)] transition duration-300 group-hover:opacity-100" />
-                  <span className="absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-[#c99b38]/[0.13] via-[#c99b38]/[0.03] to-transparent transition-transform duration-500 ease-out group-hover:scale-x-100" />
-                  <span className="archive-card-shine absolute inset-y-0 left-[-40%] w-[20%] skew-x-[-18deg] bg-gradient-to-r from-transparent via-white/[0.085] to-transparent group-hover:left-[125%]" />
-                  <span className="absolute inset-x-8 bottom-0 h-px origin-left scale-x-0 bg-gradient-to-r from-[#f0d68f]/55 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
-
-                  <p className="relative z-10 pt-1 font-serif text-sm tracking-[0.15em] text-[#dfc47b] transition duration-300 group-hover:text-[#ffe39b] sm:text-base">
-                    {notice.number}
+                <div className="relative z-10 min-w-0">
+                  <p className="text-[8px] tracking-[0.2em] text-zinc-300 sm:text-[9px]">
+                    {notice.code}
                   </p>
 
-                  <div className="relative z-10 min-w-0">
-                    <p className="text-[8px] tracking-[0.2em] text-zinc-300 sm:text-[9px]">
-                      {notice.code}
-                    </p>
-                    <h3 className="mt-2 font-serif text-xl tracking-[0.05em] text-[#f7efe2] transition duration-300 group-hover:translate-x-1 group-hover:text-[#fff2c8] sm:text-2xl">
-                      {notice.title}
-                    </h3>
-                    <p className="mt-3 break-keep text-xs leading-6 text-zinc-200 sm:text-sm sm:leading-7">
-                      {notice.description}
-                    </p>
-                  </div>
+                  <h3 className="mt-2 font-serif text-xl tracking-[0.05em] text-[#f7efe2] transition duration-300 group-hover:translate-x-1 group-hover:text-[#fff2c8] sm:text-2xl">
+                    {notice.title}
+                  </h3>
 
-                  <div className="relative z-10 flex items-center justify-end gap-3 pt-1 sm:pt-0">
-                    <span className="hidden text-[8px] tracking-[0.2em] text-emerald-100 sm:inline">
-                      ● OPEN
-                    </span>
-                    <span className="text-xl text-[#dfc47b] transition duration-300 group-hover:translate-x-2 group-hover:text-[#ffe39b]">
-                      →
-                    </span>
-                  </div>
-                </button>
-              );
-            })}
+                  <p className="mt-3 break-keep text-xs leading-6 text-zinc-200 sm:text-sm sm:leading-7">
+                    {notice.description}
+                  </p>
+                </div>
+
+                <div className="relative z-10 flex items-center justify-end gap-3 pt-1 sm:pt-0">
+                  <span className="hidden text-[8px] tracking-[0.2em] text-emerald-100 sm:inline">
+                    ● OPEN
+                  </span>
+
+                  <span className="text-xl text-[#dfc47b] transition duration-300 group-hover:translate-x-2 group-hover:text-[#ffe39b]">
+                    →
+                  </span>
+                </div>
+              </button>
+            ))}
           </div>
         </div>
 
