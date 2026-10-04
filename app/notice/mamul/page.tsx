@@ -38,7 +38,7 @@ const beastRanks: BeastRank[] = [
   {
     grade: "E",
     english: "ENTRY THREAT",
-    designation: "저위 마물",
+    designation: "최하급 마물",
     summary:
       "마물 등급 체계의 최하위 단계다. 단독 개체의 위협은 제한적이지만, 군집을 이루면 일반인과 비각성 병력에 치명적이다.",
     descriptions: [
@@ -51,26 +51,26 @@ const beastRanks: BeastRank[] = [
     named:
       "E급 네임드는 동일 등급 개체보다 높은 지능과 특수능력을 지니며, 숙련된 E급 헌터에게도 위험하다.",
     boss:
-      "E급 보스는 소규모 군집을 지휘하며, D급 헌터가 대응해야 안정적인 토벌이 가능하다.",
+      "E급 보스는 소규모 군집을 지휘하며, 토벌하기 위해선 E급 헌터가 최소 둘은 필요하다",
     tone: "entry",
   },
   {
     grade: "D",
     english: "COMBAT THREAT",
-    designation: "전투 마물",
+    designation: "하급 마물",
     summary:
       "일반인의 대응 범위를 벗어나는 최초의 전투 등급이다. 이 단계부터 마물은 공식 토벌 대상으로 분류된다.",
     descriptions: [
       "D급 마물은 차량을 파괴하거나 건물 외벽을 돌파할 수 있는 신체 능력을 지닌다.",
-      "일부 개체는 독, 산성 체액, 초음파, 단거리 돌진과 같은 공격 수단을 사용한다.",
+      "일부 개체는 마나를 통한 공격 수단을 사용한다.",
       "도시 내부에 침입할 경우 일반 치안 병력만으로는 제압하기 어렵다.",
     ],
     minion:
-      "일반적인 D급 잡졸은 E급 헌터 한 명을 상대로 우위를 점하며, 숙련도에 따라 D급 헌터도 위협할 수 있다.",
+      "일반적인 D급 잡졸은 E급 헌터 한 명이 무난히 상대할 수 있다.",
     named:
       "D급 네임드는 동일 등급 마물 여러 개체를 통솔하거나, 특정 환경에서 전투력이 크게 상승한다.",
     boss:
-      "D급 보스는 저등급 게이트의 최종 개체로 등장하며, 최소 C급 헌터가 포함된 공략대가 필요하다.",
+      "D급 보스는 저등급 게이트의 최종 개체로 등장하며, 토발하기 위해선 D급 헌터가 최소 셋은 필요하다",
     tone: "combat",
   },
   {
@@ -85,11 +85,11 @@ const beastRanks: BeastRank[] = [
       "소규모 정착지나 방벽 외곽을 단독으로 붕괴시키는 사례도 존재한다.",
     ],
     minion:
-      "일반적인 C급 잡졸은 D급 헌터를 상대로 우위를 점하며, 다수의 D급 전력을 동시에 상대할 수 있다.",
+      "일반적인 C급 잡졸은 D급 헌터 한 명이 무난히 상대할 수 있다.",
     named:
       "C급 네임드는 지역 단위로 이름이 알려질 정도의 피해 기록을 남기며, 고유한 습성과 전투 패턴을 보유한다.",
     boss:
-      "C급 보스는 하나의 게이트 생태계를 지배하며, B급 헌터 또는 다수의 C급 헌터가 필요하다.",
+      "전투 방식이 확립되기 시작하는 보스급으로, C급 보스를 토멀하기 위해선 C급 헌터가 최소 다섯이 필요하다.",
     tone: "core",
   },
   {
@@ -97,24 +97,24 @@ const beastRanks: BeastRank[] = [
     english: "HIGH THREAT",
     designation: "고위 마물",
     summary:
-      "국가가 직접 대응 계획을 수립하는 고위 등급이다. 개체 하나가 도시의 특정 구역을 붕괴시킬 수 있다.",
+      "강함의 척도의 초석이 되는 등급으로, 해당 마물과 조우할 경우 신중을 기할 필요가 있다.",
     descriptions: [
       "B급 마물은 단순 생물의 범주를 넘어선 능력과 지능을 보유한다.",
       "일부 개체는 언어를 이해하거나, 협상과 기만을 통해 인간 사회에 접근한다.",
-      "광역 공격과 마나 교란 능력으로 인해 대규모 민간 피해가 발생할 가능성이 높다.",
+      "공략이 미지수인 S급 헌터와 출현 빈도가 낮은 A급 마물을 제외하고 인류에게 가장 큰 위협이 되는 등급이기도 하다",
     ],
     minion:
-      "일반적인 B급 잡졸은 C급 헌터를 상대로 우위를 점하며, 준비되지 않은 공략대를 단독으로 전멸시킬 수 있다.",
+      "일반적인 B급 잡졸은 C급 헌터 한 명이 무난히 상대할 수 있다.",
     named:
       "B급 네임드는 도시권 전체에 수배령이 내려지는 위험 개체다. 전투 기록과 약점이 별도 문서로 관리된다.",
     boss:
-      "B급 보스는 고등급 게이트나 마경의 중심부를 지배하며, 최소 A급 헌터 또는 국가 단위 공략대가 필요하다.",
+      "B급 보스는 게이트나 마경의 중심부를 지배하며, 최소 B급 헌터 다섯이 필요하다.",
     tone: "high",
   },
   {
     grade: "A",
     english: "NATIONAL THREAT",
-    designation: "국가재난급 마물",
+    designation: "미분류",
     summary:
       "국가 존속에 직접적인 위협을 가하는 등급이다. 출현 사실만으로 대규모 대피령과 국가비상사태가 선포된다.",
     descriptions: [
@@ -123,11 +123,11 @@ const beastRanks: BeastRank[] = [
       "대부분의 A급 개체는 독립된 영역을 형성하고, 그 내부의 마물을 지배한다.",
     ],
     minion:
-      "일반적인 A급 잡졸도 B급 헌터를 상대로 우위를 점하며, 다수의 고위 헌터를 동시에 압박할 수 있다.",
+      "일반적인 A급 잡졸은 B급 헌터를 헌터 한 명이 무난히 상대할 수 있다.",
     named:
       "A급 네임드는 국가 차원의 고유 식별명과 전담 대응계획을 부여받는다.",
     boss:
-      "A급 보스는 광역 재난의 중심 개체다. 다수의 A급 헌터와 국가전력이 연합해야 토벌 가능성을 확보한다.",
+      "A급 보스에 대해선 기록이 정확하지 않다. 특징에 따라 등급을 초월할 가능성이 있는 개채도 존재하기 때문이다..",
     tone: "national",
   },
 ];
@@ -219,7 +219,12 @@ export default function MamulPage() {
       <div className="pointer-events-none fixed inset-0 shadow-[inset_0_0_140px_rgba(0,0,0,0.72)] sm:shadow-[inset_0_0_230px_rgba(0,0,0,0.88)]" />
 
       <article className="relative z-10 mx-auto w-full max-w-5xl">
-        <header className="beast-rise beast-delay-1 border-b border-red-300/20 pb-8 sm:pb-11">
+        <header className="beast-rise beast-delay-1 relative overflow-hidden border border-red-300/20 bg-black/25 px-6 py-10 shadow-[0_30px_100px_rgba(0,0,0,0.45)] sm:px-9 sm:py-12">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-red-300/70 to-transparent" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-serif text-[clamp(7rem,20vw,18rem)] font-black tracking-[-0.05em] text-red-200/[0.025]">
+            THREAT
+          </div>
+          <div className="relative">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="mb-4 text-[9px] tracking-[0.28em] text-red-300/70 sm:text-[10px]">
@@ -272,7 +277,17 @@ export default function MamulPage() {
               <span className="ml-3 text-red-200">E — S</span>
             </p>
           </div>
+          </div>
         </header>
+
+        <section className="beast-rise beast-delay-2 mt-8 border-y border-red-300/25 bg-red-950/[0.08] px-5 py-5 text-center">
+          <p className="text-[9px] tracking-[0.3em] text-red-200/80">
+            HOSTILE ENTITY ARCHIVE · ACTIVE THREAT DATABASE
+          </p>
+          <p className="mt-3 break-keep font-serif text-lg text-red-100 sm:text-xl">
+            모든 개체 기록은 교전 목적이 아닌 생존 및 대응을 위한 열람 자료입니다.
+          </p>
+        </section>
 
         <section className="beast-rise beast-delay-2 border-b border-white/[0.08] py-12 sm:py-16">
           <div className="text-center">
@@ -335,7 +350,7 @@ export default function MamulPage() {
               </h3>
               <p className="mt-4 break-keep text-sm leading-7 text-zinc-300">
                 동일 등급에서 가장 흔하게 확인되는 일반 개체다. 통상적으로
-                한 단계 아래 전투 등급의 헌터를 상대할 수 있다.
+                한 단계 아래 전투 등급의 헌터가 상대할 수 있다.
               </p>
             </div>
 
@@ -388,9 +403,13 @@ export default function MamulPage() {
                 <section
                   key={rank.grade}
                   className={`overflow-hidden border bg-[#0d0f10]/95 transition duration-500 ${
-                    isOpen
-                      ? "border-red-300/25 shadow-[0_12px_45px_rgba(0,0,0,0.3)]"
-                      : "border-white/[0.09] hover:border-red-300/18"
+                    rank.grade === "A"
+                      ? isOpen
+                        ? "border-red-300/55 bg-red-950/[0.08] shadow-[0_0_55px_rgba(239,68,68,0.12)]"
+                        : "border-red-300/28 hover:border-red-300/50"
+                      : isOpen
+                        ? "border-red-300/25 shadow-[0_12px_45px_rgba(0,0,0,0.3)]"
+                        : "border-white/[0.09] hover:border-red-300/18"
                   }`}
                 >
                   <button
@@ -419,6 +438,12 @@ export default function MamulPage() {
                         <span className="text-[10px] text-zinc-400">
                           {rank.designation}
                         </span>
+
+                        {rank.grade === "A" && (
+                          <span className="border border-red-300/30 bg-red-950/[0.12] px-2.5 py-1 text-[8px] tracking-[0.16em] text-red-100/85">
+                            EVACUATION REQUIRED
+                          </span>
+                        )}
                       </div>
                     </div>
 
@@ -487,17 +512,26 @@ export default function MamulPage() {
           </div>
         </section>
 
-        <section className="beast-rise beast-delay-5 border-b border-white/[0.08] py-12 sm:py-16">
-          <p className="font-serif text-sm tracking-[0.26em] text-fuchsia-300/80">
+        <section className="beast-rise beast-delay-5 relative overflow-hidden border-y border-red-300/20 bg-[#080607] px-5 py-14 sm:px-8 sm:py-18">
+          <p className="font-serif text-sm tracking-[0.26em] text-red-300/85">
             제4장
           </p>
 
-          <h2 className="mt-4 font-serif text-3xl tracking-[0.07em] text-[#eee8dc] sm:text-5xl">
+          <div className="mt-6 border-y border-red-300/25 bg-red-950/[0.08] px-5 py-6 text-center">
+            <p className="text-[9px] tracking-[0.28em] text-red-200/75">
+              RESTRICTED THREAT ARCHIVE
+            </p>
+            <p className="mt-4 font-serif text-xl leading-8 text-red-100 sm:text-2xl">
+              교전 허가 없음 · 접근 금지 · 관측 우선
+            </p>
+          </div>
+
+          <h2 className="mt-8 font-serif text-4xl tracking-[0.08em] text-red-100 sm:text-6xl">
             S급 마물
           </h2>
 
-          <div className="mt-7 border-y border-fuchsia-300/20 bg-fuchsia-950/[0.035] px-5 py-8 text-center sm:px-8">
-            <p className="font-serif text-lg leading-9 text-fuchsia-100/90 sm:text-xl">
+          <div className="mt-8 border-y border-red-300/25 bg-red-950/[0.07] px-5 py-8 text-center sm:px-8">
+            <p className="font-serif text-lg leading-9 text-red-100/95 sm:text-xl">
               현재 공식적으로 확인되는 S급 마물은 총 다섯 개체다.
             </p>
 
@@ -511,13 +545,13 @@ export default function MamulPage() {
             {sRankBeasts.map((beast) => (
               <article
                 key={beast.number}
-                className="relative overflow-hidden border border-fuchsia-300/15 bg-[#0b0c0e]/95 p-6 sm:p-8"
+                className="relative overflow-hidden border border-red-300/20 bg-[#0b0c0e]/95 p-6 sm:p-8"
               >
-                <div className="absolute inset-y-0 left-0 w-[2px] bg-fuchsia-300/45 shadow-[0_0_16px_rgba(240,171,252,0.28)]" />
+                <div className="absolute inset-y-0 left-0 w-[2px] bg-red-300/55 shadow-[0_0_16px_rgba(248,113,113,0.28)]" />
 
                 <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
                   <div className="min-w-0">
-                    <p className="text-[9px] tracking-[0.22em] text-fuchsia-300/70">
+                    <p className="text-[9px] tracking-[0.22em] text-red-300/75">
                       S-RANK ENTITY · {beast.number}
                     </p>
 
@@ -535,7 +569,25 @@ export default function MamulPage() {
                   </span>
                 </div>
 
-                <div className="mt-7 grid grid-cols-1 gap-px overflow-hidden border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2">
+                <div className="mt-7 grid grid-cols-2 gap-px overflow-hidden border border-red-300/15 bg-red-300/[0.08] sm:grid-cols-4">
+                  {[
+                    ["접근 허가", "DENIED"],
+                    ["교전 허가", "DENIED"],
+                    ["토벌 기록", "NONE"],
+                    ["위험 반경", "UNKNOWN"],
+                  ].map(([label, value]) => (
+                    <div key={label} className="bg-[#08090a] px-4 py-4">
+                      <p className="text-[8px] tracking-[0.15em] text-zinc-600">
+                        {label}
+                      </p>
+                      <p className="mt-2 text-[10px] tracking-[0.14em] text-red-100/85">
+                        {value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-5 grid grid-cols-1 gap-px overflow-hidden border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2">
                   <div className="bg-[#090a0b] p-5">
                     <p className="text-[9px] tracking-[0.18em] text-zinc-500">
                       거점
@@ -560,7 +612,7 @@ export default function MamulPage() {
                 </p>
 
                 <div className="mt-6 border-t border-white/[0.08] pt-5">
-                  <p className="text-[9px] tracking-[0.18em] text-fuchsia-300/65">
+                  <p className="text-[9px] tracking-[0.18em] text-red-300/65">
                     중앙기록국 비고
                   </p>
                   <p className="mt-3 break-keep text-sm leading-7 text-zinc-400">
@@ -572,14 +624,26 @@ export default function MamulPage() {
           </div>
         </section>
 
-        <section className="beast-rise beast-delay-6 py-14 text-center sm:py-20">
-          <p className="font-serif text-xl leading-9 text-red-100/90 sm:text-2xl">
-            마물의 등급은 강함만을 의미하지 않는다.
-          </p>
+        <section className="beast-rise beast-delay-6 relative overflow-hidden border-y border-red-300/25 bg-red-950/[0.055] px-6 py-16 text-center sm:px-10 sm:py-22">
+          <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap font-serif text-[clamp(6rem,18vw,14rem)] text-red-200/[0.025]">
+            WARNING
+          </div>
 
-          <p className="mt-4 font-serif text-xl leading-9 text-[#f1eadb] sm:text-2xl">
-            하나의 개체가 문명에 남길 수 있는 피해의 규모를 의미한다.
-          </p>
+          <div className="relative">
+            <p className="text-[9px] tracking-[0.34em] text-red-300/80">
+              FINAL WARNING
+            </p>
+
+            <div className="mx-auto mt-7 h-px w-52 bg-gradient-to-r from-transparent via-red-300/70 to-transparent" />
+
+            <p className="mx-auto mt-8 max-w-4xl break-keep font-serif text-3xl leading-[1.6] text-red-100 sm:text-4xl">
+              마물의 등급은 강함만을 의미하지 않는다.
+              <br />
+              하나의 개체가 문명에 남길 수 있는 피해의 규모를 의미한다.
+            </p>
+
+            <div className="mx-auto mt-9 h-px w-52 bg-gradient-to-r from-transparent via-red-300/70 to-transparent" />
+          </div>
         </section>
 
         <footer className="beast-rise beast-delay-7 border-t border-white/[0.08] pt-8 text-center">
@@ -608,6 +672,15 @@ export default function MamulPage() {
         .beast-delay-5 { animation-delay: 0.44s; }
         .beast-delay-6 { animation-delay: 0.54s; }
         .beast-delay-7 { animation-delay: 0.64s; }
+
+        .beast-alert {
+          animation: beastAlert 2s ease-in-out infinite;
+        }
+
+        @keyframes beastAlert {
+          0%, 100% { opacity: 0.65; }
+          50% { opacity: 1; }
+        }
 
         @keyframes beastRise {
           from {

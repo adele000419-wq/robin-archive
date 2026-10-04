@@ -96,7 +96,7 @@ export default function FactionsPage() {
 
           <div className="mx-auto mt-10 max-w-3xl space-y-7 break-keep text-sm leading-8 text-zinc-300 sm:text-base sm:leading-9">
             <p>
-              대한민국 헌터협회는 게이트 출현 이후 설립된다. 정부로부터
+              대한민국 헌터협회는 게이트 출현 이후 설립되었다. 정부로부터
               초상재난 대응 권한을 위임받아 헌터, 게이트, 마물에 관한 모든
               행정 업무를 총괄한다.
             </p>
@@ -157,7 +157,7 @@ export default function FactionsPage() {
           </div>
         </section>
 
-        {/* 조직 */}
+        {/* 조직도 */}
         <section className="institution-rise institution-delay-4 border-b border-white/[0.08] py-12 sm:py-16">
           <p className="font-serif text-sm tracking-[0.26em] text-amber-300/85">
             제3장

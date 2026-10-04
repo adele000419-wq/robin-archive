@@ -87,7 +87,7 @@ const globalRegions: RegionRecord[] = [
       "기존 국경이 붕괴한 이후 주요 방벽도시들이 공동방위체제를 유지한다. 과거의 국가명은 행정기록에만 남아 있다.",
   },
   {
-    name: "중화 군벌도시권",
+    name: "중화민국",
     status: "분열",
     tone: "warning",
     description:
@@ -169,13 +169,13 @@ const timeline = [
   },
   {
     date: "2026. 11",
-    title: "제1차 서울 탈환작전",
+    title: "서울 탈환작전",
     description:
       "최초의 헌터 부대가 서울 중심부에 투입되었다. 작전은 막대한 희생 끝에 제한적인 성공을 거두었다.",
   },
   {
     date: "2027",
-    title: "제1차 문명 붕괴",
+    title: "문명 붕괴",
     description:
       "전 세계 국가의 절반 이상이 행정기능을 상실했다. 국경은 의미를 잃었고 생존도시가 국가를 대신하기 시작했다.",
   },
@@ -719,7 +719,7 @@ export default function WorldPage() {
           </p>
 
           <p className="mx-auto mt-5 max-w-2xl break-keep text-[10px] leading-6 text-zinc-400 sm:text-xs sm:leading-7">
-            본 사이트는 Robin이 직접 기획 및 제작한 세계관
+            본 사이트는 Robin이 직접 기획 및 제작한 세계관 ㅍㅊ
             아카이브입니다.
             <br className="hidden sm:block" />
             사이트에 포함된 모든 설정, 문서 및 콘텐츠의 저작권은

@@ -61,17 +61,26 @@ const notices: NoticeRecord[] = [
     href: "/notice/mamul",
     status: "OPEN",
   },
- {
+{
   number: "06",
   code: "PLAYABLE HUNTER",
   title: "플레이어블 헌터",
   description:
-    "플레이어가 직접 운용하는 헌터의 프로필과 등록 정보를 열람하는 문서.",
+    "세계관 내 주요 헌터의 신원과 능력에 관한 문서.",
   href: "/notice/playable-hunter",
   status: "OPEN",
 },
-  {
+{
   number: "07",
+  code: "ARTIFACT",
+  title: "아티팩트",
+  description:
+    "게이트와 마경에서 발견되는 특수 장비와 유물에 관한 공식 기록.",
+  href: "/notice/artifact",
+  status: "OPEN",
+},
+{
+  number: "08",
   code: "GUIDELINE",
   title: "가이드라인",
   description:
@@ -80,11 +89,11 @@ const notices: NoticeRecord[] = [
   status: "OPEN",
 },
 {
-  number: "08",
+  number: "09",
   code: "RULES",
   title: "규칙",
   description:
-    "역극 진행과 참여자 간 상호작용에 적용되는 공식 규칙.",
+    "역극 진행과 맴버 간 상호작용에 적용되는 공식 규칙.",
   href: "/notice/rules",
   status: "OPEN",
 },

@@ -71,14 +71,14 @@ const abilityRestrictions: AbilityRule[] = [
     number: "04",
     title: "부활·무적",
     description:
-      "사망 이후 제한 없이 부활하거나, 모든 공격과 피해를 무효화하는 무적 상태를 부여하는 능력은 허용하지 않습니다.",
+      "사망 이후 부활하거나, 모든 공격과 피해를 무효화하는 무적 상태를 부여하는 능력은 허용하지 않습니다.",
     tone: "danger",
   },
   {
     number: "05",
     title: "퍼센트 계열 피해",
     description:
-      "상대의 현재 체력이나 최대 체력에 비례하여 N%의 고정 피해를 가하는 능력은 허용하지 않습니다.",
+      "상대의 현재 체력이나 최대 체력에 비례하여 N%의 피해를 가하는 능력은 허용하지 않습니다.",
     tone: "warning",
   },
   {
@@ -748,11 +748,11 @@ export default function GuidelinePage() {
                 </p>
 
                 <h4 className="mt-3 font-serif text-xl text-white sm:text-2xl">
-                  염동력 계열 능력
+                  염동력 및 순간이동 계열 능력
                 </h4>
 
                 <p className="mt-4 break-keep text-sm leading-8 text-zinc-300 sm:text-base">
-                  염동력 계열 능력은 B등급 이상 캐릭터만 사용할 수 있습니다.
+                  염동력 및 순간이동 계열 능력은 B등급 이상 캐릭터만 사용할 수 있습니다.
                   B등급 미만 캐릭터는 해당 계열의 능력을 신청할 수 없습니다.
                 </p>
               </div>
